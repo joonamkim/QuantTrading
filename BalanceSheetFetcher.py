@@ -30,7 +30,7 @@ def get_balance_sheet(ticker):
 
 
 def getPERandPBR(df):
-    return df.loc[['PER(배)', 'PBR(배)'], ["2020.12(E)"]]
+    return df.loc[['PER(배)', 'PBR(배)'], ['2017.12', '2018.12']]
 
 
 def getPERandPBRsForAllKStocks():
@@ -47,12 +47,14 @@ def getPERandPBRsForAllKStocks():
         balance_sheet = get_balance_sheet(ticker)
         if balance_sheet is None:
             continue
-        value = getPERandPBR(balance_sheet)
+        value = balance_sheet
         dic[ticker] = value
         print(ticker, "  : ", value)
         i += 1
 
 
 if __name__ == '__main__':
-    # getPERandPBRsForAllKStocks()
-    balance_sheet = get_balance_sheet(199800)
+    getPERandPBRsForAllKStocks()
+    # balance_sheet = get_balance_sheet(251270)
+    # print(balance_sheet)
+    # print(balance_sheet.columns)
